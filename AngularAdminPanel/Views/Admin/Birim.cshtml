@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "Birim";
+    Layout = "~/Views/Shared_/_AdminLayout.cshtml";
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.1.js"></script>
+<script src="~/js/personelbirimekleme.js?v=@DateTime.Now.ToString("ddMMyyyyHHmmss")"></script>
+
+<style>
+    .item {
+        margin-bottom: 20px;
+    }
+</style>
+<h2>Peronel Birim Ekleme/Listeleme Sayfası</h2>
+<br />
+<div class="panel panel-white" ng-controller="personelbirimEklemeController" ng-app="sirketAdmin">
+    <div class="panel-heading clearfix">
+    </div>
+    <div class="panel-body">
+        <div role="tabpanel">
+            <div class="tab-content">
+                <form class="formPost" id="form">
+                    <div class="item">
+                        <input type="hidden" name="birim_no" id="birim_no" value="{{no}}" />
+                        <label>Personel Birim</label>
+                        <input type="text" placeholder="Personel Birim Giriniz.." name="birim_ad" id="birim_ad" value="{{birim}}" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <input type="submit" class="btn btn-success" style="float:right" ng-click="personelBirimEkle(birim_no)" value="Kaydet" />
+                    </div>
+                </form>
+
+            </div>
+            <br />
+            <hr />
+
+            <br />
+            <br />
+            <div class="panel panel-white">
+                <div class="panel-body">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Birim</th>
+                                <th>
+                                    İşlemler
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in birimliste">
+                                <th>{{$index + 1}}</th>
+                                <td>{{item.birim_ad}}</td>
+                                <td>
+                                    <input type="button" value="Sil" class="btn btn-danger" ng-click="birimsil(item.birim_no)" />
+                                    <input type="button" value="Düzenle" class="btn btn-success" ng-click="birimduzenle(item.birim_no)" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

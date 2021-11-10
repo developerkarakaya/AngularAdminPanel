@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared_/_AdminLayout.cshtml";
+}
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.1.js"></script>
+<script src="~/js/personelekleme.js?v=@DateTime.Now.ToString("ddMMyyyyHHmmss")"></script>
+<style>
+    .item {
+        margin-bottom:20px;
+    }
+</style>
+<h2 >Peronel Ekleme/Listeleme Sayfası</h2>
+<br />
+<div class="panel panel-white" ng-controller="personelEklemeController" ng-app="sirketAdmin">
+    <div class="panel-heading clearfix">
+    </div>
+    <div class="panel-body">
+        <div role="tabpanel">
+            <div class="tab-content">
+                <form class="formPost" id="form">
+                    <input type="hidden" value="{{id}}" id="personel_no" name="personel_no" />
+                    <input type="hidden" value="{{baslama_tarihi}}" id="baslama_tarihi" name="baslama_tarihi" />
+                    <div class="item">
+                        <label>Personel Adı</label>
+                        <input type="text" placeholder="Personel Adı Giriniz.." name="ad" id="ad" value="{{ad}}" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <label>Personel Soyadı</label>
+                        <input type="text" placeholder="Personel Soyadı Giriniz.." name="soyad" value="{{soyad}}" id="soyad" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <label>Personel Cinsiyet</label> <br />
+                        <select name="cinsiyet" class="form-control-static"  value="{{cinsiyet}}"  id="urunkategori">
+                            <option value="" disabled selected hidden>Cinsiyet Belirtiniz</option>
+                            <option >Erkek</option>
+                            <option>Kadın</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label>Personel Ünvan</label> <br />
+                        <select name="unvan" class="form-control-static" value="{{unvan}}" id="unvan">
+                            <option value="" disabled selected hidden>Ünvan Belirtiniz</option>
+                            <option ng-repeat="item in unvanListe" value="{{item.unvan_ad}}">{{item.unvan_ad}}</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label>Personel Birim</label> <br />
+                        <select name="birim" class="form-control-static" value="{{birim}}" id="birim">
+                            <option value="" disabled selected hidden>Birim Belirtiniz</option>
+                            <option ng-repeat="item in birimliste" value="{{item.birim_ad}}">{{item.birim_ad}}</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label>Personel İl</label> <br />
+                        <select name="il" class="form-control-static" value="{{il}}" id="il">
+                            <option value="" disabled selected hidden>İl Belirtiniz</option>
+                            <option ng-repeat="item in illerliste | orderBy : 'name'" value="{{item.name}}">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="item">
+                        <label>Personel Doğum Tarihi</label>
+                        <input type="datetime-local" placeholder="Personel Doğum Tarihi Giriniz.." value="{{dogum_tarihi}}" name="dogum_tarihi" id="dogum_tarihi" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <label>Personel Çalışma Saati </label>
+                        <input type="text" placeholder="Personel Çalışma Saati Giriniz.." value="{{calisma_saati}}" name="calisma_saati" id="calisma_saati" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <label>Personel Maaş</label>
+                        <input type="text" placeholder="Personel Maaş Giriniz.." name="maas" value="{{maas}}" id="maas" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <label>Personel Prim</label>
+                        <input type="text" placeholder="Personel Prim Giriniz.." name="prim" id="prim" value="{{prim}}" class="form-control" />
+                    </div>
+                    <div class="item">
+                        <input type="submit" class="btn btn-success" style="float:right" ng-click="personelEkle(id)" value="Kaydet" />
+                    </div>
+
+                </form>
+
+            </div>
+            <br />
+            <hr />
+            <input type="text" class="form-control" placeholder="Personel Ara.." style="width:200px; float:right" ng-model="arama" />
+            <br />
+            <br />
+            <div class="panel panel-white">
+                <div class="panel-body">
+
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Sıra</th>
+                                <th>Adı</th>
+                                <th>Cinsiyet</th>
+                                <th>Ünvan</th>
+                                <th>Birim</th>
+                                <th>İl</th>
+                                <th>Doğum Tarihi</th>
+                                <th>Çalışma Saati</th>
+                                <th>Maaş</th>
+                                <th>Prim</th>
+                                <th>
+                                    İşlemler
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="item in personelListe |filter:arama">
+                                <th>{{$index + 1}}</th>
+                                <td>{{item.ad}} {{item.soyad}}</td>
+                                <td>{{item.cinsiyet}}</td>
+                                <td>{{item.unvan}}</td>
+                                <td>{{item.birim}}</td>
+                                <td>{{item.il}}</td>
+                                <td>{{item.dogum_tarihi}}</td>
+                                <td>{{item.calisma_saati}}</td>
+                                <td>{{item.maas}}</td>
+                                <td>{{item.prim}}</td>
+                                <td>
+                                    <input type="button" value="Sil" class="btn btn-danger" ng-click="personelSil(item.personel_no)" />
+                                    <input type="button" value="Düzenle" class="btn btn-success" ng-click="personelDuzenle(item.personel_no)" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

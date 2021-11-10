@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from phantom-themes.com/meteor/Source/admin3/login-alt.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jun 2020 11:41:45 GMT -->
+<head>
+
+    <!-- Title -->
+    <title>Meteor | Login - Sign in</title>
+
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta charset="UTF-8">
+    <meta name="description" content="Admin Dashboard Template" />
+    <meta name="keywords" content="admin,dashboard" />
+    <meta name="author" content="stacks" />
+
+    <!-- Styles -->
+    <link href="/Content/admin/assets/plugins/pace-master/themes/blue/pace-theme-flash.css" rel="stylesheet" />
+    <link href="/Content/admin/assets/plugins/uniform/css/default.css" rel="stylesheet" />
+    <link href="/Content/admin/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/line-icons/simple-line-icons.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/offcanvasmenueffects/css/menu_cornerbox.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/waves/waves.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/switchery/switchery.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/plugins/3d-bold-navigation/css/style.css" rel="stylesheet" type="text/css" />
+
+    <!-- Theme Styles -->
+    <link href="/Content/admin/assets/css/meteor.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/css/layers/material-layer.css" class="theme-color" rel="stylesheet" type="text/css" />
+    <link href="/Content/admin/assets/css/custom.css" rel="stylesheet" type="text/css" />
+
+    <script src="/Content/admin/assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
+    <script src="/Content/admin/assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.0.1.js"></script>
+    <script src="~/js/login.js?v=@DateTime.Now.ToString("ddMMyyyyHHmmss")"></script>
+</head>
+<body class="page-login-alt">
+    <div class="page-inner" ng-app="sirketAdmin" ng-controller="loginController">
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-3 col-login-box-alt">
+                    <div class="panel panel-white login-box" id="js-alerts">
+                        <div class="panel-body">
+                            <a href="/Content/admin/index.html" class="logo-name text-lg">METEOR</a>
+                            <p class="m-t-md">Lütfen Hesabınıza Giriş Yapın.</p>
+                            <form class="m-t-md" id="formLogin">
+                                <div class="form-group">
+                                    <input type="email" id="email" class="form-control" placeholder="E-Mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" name="password" class="password form-control" placeholder="Şifre" required>
+                                </div>
+                               
+                                <div class="alert alert-danger alert-dismissible" ng-show="IserrorMessage" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    {{errorMessage}}
+                                </div>
+                               
+                                <button type="submit" class="btn btn-success btn-block m-b-xs" ng-click="login()">Giriş Yap</button>
+                                <a href="/Admin/KayitOl" class="btn btn-default btn-block m-t-md">Hesap Oluştur</a>
+                                <a href="/Content/admin/forgot.html" class="display-block m-t-md text-sm">Şifremi Unuttum?</a>
+                            
+                            
+                            </form>
+                            <p class="text-center m-t-xs text-sm login-footer">@DateTime.Now.Year &copy; ...</p>
+                            </div>
+                        </div>
+                  
+                    </div>
+                </div><!-- Row -->
+            </div><!-- Main Wrapper -->
+        </div><!-- Page Inner -->
+    <!-- Javascripts -->
+    <script src="/Content/admin/assets/plugins/jquery/jquery-3.1.0.min.js"></script>
+    <script src="/Content/admin/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script src="/Content/admin/assets/plugins/pace-master/pace.min.js"></script>
+    <script src="/Content/admin/assets/plugins/jquery-blockui/jquery.blockui.js"></script>
+    <script src="/Content/admin/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Content/admin/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="/Content/admin/assets/plugins/switchery/switchery.min.js"></script>
+    <script src="/Content/admin/assets/plugins/uniform/js/jquery.uniform.standalone.js"></script>
+    <script src="/Content/admin/assets/plugins/offcanvasmenueffects/js/classie.js"></script>
+    <script src="/Content/admin/assets/plugins/waves/waves.min.js"></script>
+    <script src="/Content/admin/assets/js/meteor.min.js"></script>
+    <script src="/Content/admin/assets/js/pages/lr-alt.js"></script>
+
+</body>
+<!-- Mirrored from phantom-themes.com/meteor/Source/admin3/login-alt.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jun 2020 11:41:46 GMT -->
+</html>
